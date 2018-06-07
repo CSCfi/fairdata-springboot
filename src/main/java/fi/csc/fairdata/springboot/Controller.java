@@ -12,15 +12,16 @@ import org.springframework.web.bind.annotation.RestController;
  *
  */
 
-@RestController
+@RestController //should be@Controller
 @RequestMapping("/api/v1/dataset")
 public class Controller {
 
 	
 	    @RequestMapping(value = "/{id}")
 	    public Dataset dataset(@PathVariable("id") String id,
-	    		@RequestParam(value="file", defaultValue="World") String file) {
-	        return new Dataset(id, file);
+	    		@RequestParam(value="file", required = false) String file,
+	    		@RequestParam(value="dir", required = false) String dir) {
+	        return new Dataset(id, file, dir);
 	    }
 	
 
